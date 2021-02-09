@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Response } from '../models/incidencia';
 import { Contact } from '../models/contact';
+import { Login } from '../models/login';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
@@ -91,6 +92,16 @@ setCurrentContact(id: number, name: string, company_type: string, functionn: str
     this.currentContactCity = city;
     this.currentContactZip = zip;
 
+  }
+
+  loginUser(user: Login){
+    this.httpClient.post("http://localhost:8069/web/session/authenticate",
+    {jsonrpc: "2.0", params : { 'db': "centralU", 'login': user.username, 'password': user.password } },
+    config).subscribe(data => {
+      console.log(data);
+    }, err =>{
+      console.log(err);
+    });
   }
 
   
