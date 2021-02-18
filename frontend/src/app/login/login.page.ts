@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { OdooRPCService } from 'angular7-odoo-jsonrpc';
 import { Login } from '../models/login'
 import { CentralUService } from '../services/central-u.service';
 @Component({
@@ -38,15 +37,12 @@ export class LoginPage implements OnInit {
     
 
       }
-      this.login(user)
+      this.centralUService.loginUser(user)
       this.router.navigateByUrl("home")
       
         }
   }
 
-  login(user: Login){
-    
-  }
 
   
 

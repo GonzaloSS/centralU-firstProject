@@ -25,6 +25,10 @@ export class HomePage implements OnInit {
   ngOnInit(){
   }
 
+  logOut(){
+    this.centralService.logOut();
+  }
+
 goToAdd(){
   this.route.navigateByUrl("/add-incidencia");
 }

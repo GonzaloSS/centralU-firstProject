@@ -1,3 +1,42 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+
+  <ion-menu side="start" menuId="main" contentId="main">
+    <ion-header>
+      <ion-toolbar color="medium">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item [routerLink]="['home']">
+          <ion-icon name="home-outline"></ion-icon>
+
+          Home
+        </ion-item>
+        <ion-item [routerLink]="['contacts']">
+          <ion-icon name="person-circle-outline"></ion-icon>
+          Contact
+        </ion-item>
+        <ion-item [routerLink]="['add-incidencia']">
+          <ion-icon name="add-outline"></ion-icon>
+           Add Contact
+        </ion-item>
+        <ion-item [routerLink]="['products']">
+          <ion-icon name="logo-dropbox"></ion-icon>
+           Products
+        </ion-item>
+        <ion-item [routerLink]="['add-product']">
+          <ion-icon name="add-outline"></ion-icon>
+          Add product
+        </ion-item>
+        <ion-item>
+          <ion-icon name="log-out-outline"></ion-icon>
+          Log-out
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+
+  <ion-router-outlet  id="main"></ion-router-outlet>
 </ion-app>
