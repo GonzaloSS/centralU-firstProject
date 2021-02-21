@@ -80,6 +80,9 @@ export class HomePage implements OnInit {
   products(){
     this.route.navigateByUrl("products")
   }
+  inventory(){
+    this.route.navigateByUrl("see-adjustment")
+  }
   employees(){
     this.route.navigateByUrl("see-employees");
   }
