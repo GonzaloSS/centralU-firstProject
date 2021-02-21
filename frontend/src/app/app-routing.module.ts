@@ -28,24 +28,48 @@ const routes: Routes = [
     loadChildren: () => import('./contacts/contacts.module').then( m => m.ContactsPageModule)
   },
   {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },
-  {
     path: 'products',
-    loadChildren: () => import('./products/products.module').then( m => m.ProductsPageModule)
+    loadChildren: () => import('./product/products/products.module').then( m => m.ProductsPageModule)
   },
   {
     path: 'product-details',
-    loadChildren: () => import('./product-details/product-details.module').then( m => m.ProductDetailsPageModule)
+    loadChildren: () => import('./product/product-details/product-details.module').then( m => m.ProductDetailsPageModule)
   },
   {
     path: 'update-product',
-    loadChildren: () => import('./update-product/update-product.module').then( m => m.UpdateProductPageModule)
+    loadChildren: () => import('./product/update-product/update-product.module').then( m => m.UpdateProductPageModule)
   },
   {
     path: 'add-product',
-    loadChildren: () => import('./add-product/add-product.module').then( m => m.AddProductPageModule)
+    loadChildren: () => import('./product/add-product/add-product.module').then( m => m.AddProductPageModule)
+  },
+  {
+    path: 'see-all-task',
+    loadChildren: () => import('./task/see-all-task/see-all-task.module').then( m => m.SeeAllTaskPageModule)
+  },
+  {
+    path: 'see-my-own-task',
+    loadChildren: () => import('./task/see-my-own-task/see-my-own-task.module').then( m => m.SeeMyOwnTaskPageModule)
+  },
+  {
+    path: 'create-task',
+    loadChildren: () => import('./task/create-task/create-task.module').then( m => m.CreateTaskPageModule)
+  },
+  {
+    path: 'update-task',
+    loadChildren: () => import('./task/update-task/update-task.module').then( m => m.UpdateTaskPageModule)
+  },
+  {
+    path: 'see-employees',
+    loadChildren: () => import('./user/see-employees/see-employees.module').then( m => m.SeeEmployeesPageModule)
+  },
+  {
+    path: 'create-employee',
+    loadChildren: () => import('./user/create-employee/create-employee.module').then( m => m.CreateEmployeePageModule)
+  },
+  {
+    path: 'update-employee',
+    loadChildren: () => import('./user/update-employee/update-employee.module').then( m => m.UpdateEmployeePageModule)
   },
 ];
 

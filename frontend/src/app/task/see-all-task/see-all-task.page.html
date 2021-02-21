@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>seeAllTask</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p>Tareas por empezar de los trabajadores</p>
+  <ion-list>
+    <ion-row *ngFor="let t of task">
+
+        <ion-item *ngIf="t.stage_name === 'Por hacer'">
+          <ion-card  >
+            <ion-card-header>
+              
+              <ion-card-subtitle>Name: {{t.name}}</ion-card-subtitle>
+              <ion-card-subtitle>Description: {{t.description}}</ion-card-subtitle>
+              <ion-card-subtitle>Estado: {{t.stage_name}}</ion-card-subtitle>
+              <ion-card-subtitle>Empleado: {{t.user_id}}</ion-card-subtitle>
+      
+              <ion-item>
+                <ion-icon (click)="deleteTask(t.id)" name="trash" slot="end"></ion-icon>
+              </ion-item>
+            </ion-card-header>
+            <ion-card-content>
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+    </ion-row>
+  </ion-list>
+
+
+  <p>Tareas empezadas de los trabajadores</p>
+  <ion-list>
+    <ion-row *ngFor="let t of task">
+     
+
+        <ion-item *ngIf="t.stage_name === 'Haciendo'">
+          <ion-card  >
+            <ion-card-header>
+              
+              <ion-card-subtitle>Name: {{t.name}}</ion-card-subtitle>
+              <ion-card-subtitle>Description: {{t.description}}</ion-card-subtitle>
+              <ion-card-subtitle>Estado: {{t.stage_name}}</ion-card-subtitle>
+              <ion-card-subtitle>Empleado: {{t.user_id}}</ion-card-subtitle>
+      
+              <ion-item>
+                <ion-icon (click)="deleteTask(t.id)" name="trash" slot="end"></ion-icon>
+              </ion-item>
+            </ion-card-header>
+            <ion-card-content>
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+
+    </ion-row>
+  </ion-list>
+
+  <p>Tareas finalizada de los trabajadores</p>
+  <ion-list>
+    <ion-row  *ngFor="let t of task" >
+
+        <ion-item *ngIf="t.stage_name === 'Hecho'">
+          <ion-card  >
+            <ion-card-header>
+              
+              <ion-card-subtitle>Name: {{t.name}}</ion-card-subtitle>
+              <ion-card-subtitle>Description: {{t.description}}</ion-card-subtitle>
+              <ion-card-subtitle>Estado: {{t.stage_name}}</ion-card-subtitle>
+              <ion-card-subtitle>Empleado: {{t.user_id}}</ion-card-subtitle>
+      
+              <ion-item>
+                <ion-icon (click)="deleteTask(t.id)" name="trash" slot="end"></ion-icon>
+              </ion-item>
+            </ion-card-header>
+            <ion-card-content>
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+    </ion-row>
+  </ion-list>
+
+  
+</ion-content>

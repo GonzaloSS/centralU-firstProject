@@ -4,9 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPageRoutingModule } from './login-routing.module';
+import { CreateTaskPageRoutingModule } from './create-task-routing.module';
 
-import { LoginPage } from './login.page';
+import { CreateTaskPage } from './create-task.page';
 
 @NgModule({
   imports: [
@@ -14,8 +14,8 @@ import { LoginPage } from './login.page';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    LoginPageRoutingModule
+    CreateTaskPageRoutingModule
   ],
-  declarations: [LoginPage]
+  declarations: [CreateTaskPage]
 })
-export class LoginPageModule {}
+export class CreateTaskPageModule {}

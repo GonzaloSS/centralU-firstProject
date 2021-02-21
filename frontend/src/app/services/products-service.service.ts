@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LocalStorage } from '@ngx-pwa/local-storage';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
@@ -33,8 +34,8 @@ export class ProductsServiceService {
   headers: HttpHeaders
   currentProductId: number
   constructor(
-    private httpClient: HttpClient,
-    private cookieSvc: CookieService
+    private httpClient: HttpClient
+   
   ) { }
 
 
@@ -43,8 +44,8 @@ export class ProductsServiceService {
 
     this.headers = new HttpHeaders({
       "Content-Type": "application/json",
-      "X-Openerp-Session-Id": this.cookieSvc.get('session_id')
-    })
+      "X-Openerp-Session-Id": localStorage.getItem('session_id')
+  })
     return this.httpClient.post<Products[]>("http://localhost:8069/api/getProducts", postData, { headers: this.headers })
       .pipe(
 
@@ -86,7 +87,10 @@ export class ProductsServiceService {
   }
 
   getProductById(id: number) {
-    console.log(id + " hola")
+    this.headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "X-Openerp-Session-Id": localStorage.getItem('session_id')
+  })
     return this.httpClient.post("http://localhost:8069/api/getASingleProduct",
       { jsonrpc: "2.0", params: { 'id': id } },
       { headers: this.headers }).pipe(
@@ -135,7 +139,10 @@ export class ProductsServiceService {
 
 
   updateProduct(id: number, products: Products) {
-    console.log("llega")
+    this.headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "X-Openerp-Session-Id": localStorage.getItem('session_id')
+  })
     this.httpClient.post("http://localhost:8069/api/updateProduct",
       {
         jsonrpc: "2.0", params: {
@@ -155,7 +162,10 @@ export class ProductsServiceService {
   }
 
   addProduct(products: Products) {
-    console.log("llega")
+    this.headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "X-Openerp-Session-Id": localStorage.getItem('session_id')
+  })
     this.httpClient.post("http://localhost:8069/api/createProduct",
       {
         jsonrpc: "2.0", params: {
@@ -175,6 +185,10 @@ export class ProductsServiceService {
   }
 
   deleteProduct(id: number){
+    this.headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "X-Openerp-Session-Id": localStorage.getItem('session_id')
+  })
     this.httpClient.post("http://localhost:8069/api/deleteProduct",
     {jsonrpc: "2.0", params : { "id": id} },
     {headers: this.headers}).subscribe(data => {

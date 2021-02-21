@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Products } from '../models/product';
-import { ProductsServiceService } from '../services/products-service.service';
+import { Products } from '../../models/product';
+import { ProductsServiceService } from '../../services/products-service.service';
 
 @Component({
   selector: 'app-products',
@@ -9,6 +9,7 @@ import { ProductsServiceService } from '../services/products-service.service';
   styleUrls: ['./products.page.scss'],
 })
 export class ProductsPage implements OnInit {
+  session: boolean;
   product: Products[];
   constructor(
     private productService: ProductsServiceService,
@@ -16,7 +17,12 @@ export class ProductsPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (localStorage.getItem("session_id")){
+    this.session = true;
     this.getAllProducts();
+  }else{
+    this.router.navigateByUrl("home")
+  }
   }
 
   goToDetails(id: number){
