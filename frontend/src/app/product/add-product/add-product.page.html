@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>add-product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="productForm" (ngSubmit)="onFormSubmit()">
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input formControlName="name" type="text" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-input formControlName="description" type="text" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Product Type</ion-label>
+      <ion-select formControlName="type" type="text" required>
+        <ion-select-option value="consu">Consumable</ion-select-option>
+        <ion-select-option value="service">Service</ion-select-option>
+        <ion-select-option value="product">Storable Product</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Default code</ion-label>
+      <ion-input formControlName="default_code" type="text" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Barcode</ion-label>
+      <ion-input formControlName="barcode" type="text" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">List price</ion-label>
+      <ion-input formControlName="list_price" type="text" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>To sale?</ion-label>
+      <ion-select formControlName="sale_ok" type="number" required>
+        <ion-select-option value=1>Yes</ion-select-option>
+        <ion-select-option value=0>No</ion-select-option>
+        
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>To purchase?</ion-label>
+      <ion-select formControlName="purchase_ok" type="number" required>
+        <ion-select-option value=1>Yes</ion-select-option>
+        <ion-select-option value=0>No</ion-select-option>
+        
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Invoice Policy</ion-label>
+      <ion-select formControlName="invoice_policy" type="text" required>
+        <ion-select-option value="order">Ordered Quantities</ion-select-option>
+        <ion-select-option value="delivery">Delivered Quantities</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Expense Policy</ion-label>
+      <ion-select formControlName="expense_policy" type="text" required>
+        <ion-select-option value="no">No</ion-select-option>
+        <ion-select-option value="cost">At Cost</ion-select-option>
+        <ion-select-option value="sales_price">Sales price</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="primary" shape="full" expand="block">Add a new product</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

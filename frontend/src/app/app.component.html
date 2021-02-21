@@ -1,3 +1,54 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+
+  <ion-menu side="start" menuId="main" contentId="main">
+    <ion-header>
+      <ion-toolbar color="success">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item [routerLink]="['home']">
+          <ion-icon style="color: black;" name="home"></ion-icon>
+
+          Home
+        </ion-item>
+        <ion-item [routerLink]="['contacts']">
+          <ion-icon style="color: black;" name="person-circle"></ion-icon>
+          Contact
+        </ion-item>
+        <ion-item [routerLink]="['add-incidencia']">
+          <ion-icon style="color: black;" name="add-sharp"></ion-icon>
+           Add Contact
+        </ion-item>
+        <ion-item [routerLink]="['products']">
+          <ion-icon style="color: black;" name="logo-dropbox"></ion-icon>
+           Products
+        </ion-item>
+        <ion-item [routerLink]="['add-product']">
+          <ion-icon style="color: black;" name="add"></ion-icon>
+          Add product
+        </ion-item>
+        <ion-item [routerLink]="['see-all-task']">
+          <ion-icon style="color: black;" name="calendar"></ion-icon>
+          See All task
+        </ion-item>
+        <ion-item [routerLink]="['see-my-own-task']">
+          <ion-icon style="color: black;" name="calendar"></ion-icon>
+          See my own task
+        </ion-item>
+        <ion-item [routerLink]="['login']">
+          <ion-icon style="color: black;" name="log-in"></ion-icon>
+          Log-in
+        </ion-item>
+        <ion-item>
+          <ion-icon style="color: black;" name="log-out-outline"></ion-icon>
+          Log-out
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+
+  <ion-router-outlet  id="main"></ion-router-outlet>
 </ion-app>

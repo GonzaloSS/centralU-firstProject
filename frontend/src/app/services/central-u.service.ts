@@ -1,12 +1,18 @@
-import { Injectable } from '@angular/core';
-import { Response } from '../models/incidencia';
+import { Injectable, Inject } from '@angular/core';
 import { Contact } from '../models/contact';
+import { Login } from '../models/login';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
+import { CookieService} from 'ngx-cookie-service';
+import { User } from '../models/user';
+import { LocalStorage } from '@ngx-pwa/local-storage';
+
+
 
 var headers = new HttpHeaders({
-
+  
+  
   'Content-Type':'application/json',
 
   'Accept' : 'application/json'
@@ -16,7 +22,7 @@ var headers = new HttpHeaders({
 
 
 
-let config = { headers : new HttpHeaders().set('Content-Type', 'application/json')};
+//let config = { headers : new HttpHeaders().set('Content-Type', 'application/json')};
 
 
 
@@ -31,7 +37,6 @@ let postData = {
 }
 
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -44,25 +49,66 @@ export class CentralUService {
   currentContactCity : string;
   currentContactZip : string;
   currentContactFunction: string;
-  constructor(private httpClient: HttpClient) { }
+  headers: HttpHeaders
+  currentProductId: number;
+  session: User[];
+  session_id: string;
+  sessionActive: boolean;
 
-  
+  constructor(
+    private httpClient: HttpClient,
+    private cookieSvc: CookieService,
+    private localStorage: LocalStorage) { 
+
+
+    
+  }
+
+
 
   getIncidencias(): Observable<Contact[]> {
-    return this.httpClient.post<Contact[]>("http://localhost:8069/api/getContact", postData, options)
+    
+    this.headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "X-Openerp-Session-Id": localStorage.getItem('session_id')
+  })
+    return this.httpClient.post<Contact[]>("http://localhost:8069/api/getContact", postData,  {headers: this.headers})
     .pipe(
       
-      tap(incidencias => console.log('fetched incidencias')),
+      tap(incidencias => console.log('fetched incidencias', this.cookieSvc.get('session_id'))),
       catchError(this.handleError('getIncidencias', []))
     );
   }
 
+  logOut(){
+    this.headers = new HttpHeaders({
+      "Content-Type": "application/json"
+  })
+
+  return this.httpClient.post<Contact[]>("http://localhost:8069/web/session/destroy", postData,  {headers: this.headers})
+    .subscribe(data =>{
+      console.log(data)
+      localStorage.removeItem('session_id');
+      localStorage.removeItem('isAdmin');
+      localStorage.removeItem('id')
+      this.sessionActive = false;
+      window.location.reload();
+      
+    }), err =>{
+      console.log(err)
+    }
+  }
+
 
   addContact(contact: Contact){
+    this.headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "X-Openerp-Session-Id": localStorage.getItem('session_id')
+  })
     this.httpClient.post("http://localhost:8069/api/createCompany",
     {jsonrpc: "2.0", params : { 'name': contact.name, 'company_type': contact.company_type, 'function': contact.function,
     'type': contact.type, 'street': contact.street, 'city': contact.city, 'zip': contact.zip} },
-    config).subscribe(data => {
+    {headers: this.headers}).subscribe(data => {
       console.log(data);
     }, err =>{
       console.log(err);
@@ -71,9 +117,13 @@ export class CentralUService {
    }
 
    deleteContact(id: number){
+    this.headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "X-Openerp-Session-Id": localStorage.getItem('session_id')
+  })
     this.httpClient.post("http://localhost:8069/api/deleteContact",
     {jsonrpc: "2.0", params : { "id": id} },
-    config).subscribe(data => {
+    {headers: this.headers}).subscribe(data => {
       console.log(data);
     }, err =>{
       console.log(err);
@@ -93,15 +143,39 @@ setCurrentContact(id: number, name: string, company_type: string, functionn: str
 
   }
 
+  loginUser(user: Login){
+    this.httpClient.post("http://localhost:8069/web/session/authenticate",
+    {jsonrpc: "2.0", params : { 'db': "centralU", 'login': user.username, 'password': user.password } },
+    options).subscribe((data : any) =>{
+     this.session = data["result"];
+     console.log(this.session);
+     localStorage.setItem('session_id', this.session["session_id"]);
+     localStorage.setItem('isAdmin', this.session["is_admin"]);
+     localStorage.setItem('id', this.session["user_id"]);
+     window.location.reload()
+    })
+  }
+
   
   setCurrentContactId(id: number) {
     console.log(id)
     this.currentContactId = id;
   }
 
+  setCurrentProductId(id: number) {
+    console.log(id)
+    this.currentProductId = id;
+  }
+
   getCurrentContactId(): number {
     return this.currentContactId;
   }
+
+  getCurrentProductId(): number {
+    return this.currentProductId;
+  }
+
+
   getCurrentName(): string{
     return this.currentContactName;
   }
@@ -125,9 +199,28 @@ setCurrentContact(id: number, name: string, company_type: string, functionn: str
   }
 
   getContactById(id: number){
+    this.headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "X-Openerp-Session-Id": localStorage.getItem('session_id')
+  })
     return this.httpClient.post("http://localhost:8069/api/getASingleContact",
     {jsonrpc: "2.0", params : { 'id': id} },
-    config).pipe(
+    {headers: this.headers}).pipe(
+      tap(data => {
+      console.log(data);
+    }, err =>{
+      console.log(err);
+    }));
+  }
+
+  getProductById(id: number){
+    this.headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "X-Openerp-Session-Id": localStorage.getItem('session_id')
+  })
+    return this.httpClient.post("http://localhost:8069/api/getASingleProduct",
+    {jsonrpc: "2.0", params : { 'id': id} },
+    {headers: this.headers}).pipe(
       tap(data => {
       console.log(data);
     }, err =>{
@@ -138,11 +231,15 @@ setCurrentContact(id: number, name: string, company_type: string, functionn: str
 
 
 
-  updateProduct(id: number, contact: Contact) {
+  updateContact(id: number, contact: Contact) {
+    this.headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "X-Openerp-Session-Id": localStorage.getItem('session_id')
+  })
     this.httpClient.post("http://localhost:8069/api/updateContact",
     {jsonrpc: "2.0", params : { 'id': id, 'name': contact.name, 'company_type': contact.company_type, 'function': contact.function,
     'type': contact.type, 'street': contact.street, 'city': contact.city, 'zip': contact.zip} },
-    config).subscribe(data => {
+    {headers: this.headers}).subscribe(data => {
       console.log(data);
     }, err =>{
       console.log(err);

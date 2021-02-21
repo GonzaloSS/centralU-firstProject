@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CentralUService } from './services/central-u.service';
-
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -13,6 +12,6 @@ export class AppComponent {
   title = 'proxy';
   constructor(private dataSvc: CentralUService) {}
   ngOnInit(){
-    
+   
   }
 }

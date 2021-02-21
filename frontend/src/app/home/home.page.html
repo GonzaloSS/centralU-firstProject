@@ -1,13 +1,52 @@
-<ion-header [translucent]="true">
-  
+<ion-header>
+  <ion-toolbar>
+    <ion-title *ngIf="!session" style="text-align: center; color: white; font-size: 35px;">Bienvenido</ion-title>
+    <ion-title *ngIf="session" style="text-align: center; color: white; font-size: 35px;">Hola de nuevo!</ion-title>
+  </ion-toolbar>
 </ion-header>
 
-  <ion-content>
-    <img  src="https://odoocdn.com/openerp_website/static/src/img/assets/png/odoo_logo.png?a=b" alt="prueba">
-    <img  src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Ionic_Logo.svg/1280px-Ionic_Logo.svg.png" alt="prueba">
-    <br/><br/><br/>
-    <h2 style="text-align: center;">¿Que desea hacer?</h2>
-    <br/><br/><br/>
-      <ion-button style="margin-left: 30%;" id="button" (click) = "goToContacts()" color="medium">Ir a contactos</ion-button><br/><br/><br/>
-      <ion-button style="margin-left: 27%;" (click) = "goToAdd()" color="medium">Añadir contactos</ion-button>
+
+  <ion-content *ngIf="!session">
+   
+    
+    <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()" >
+      <img style="margin-top: 10%; margin-left: 24%; height: 170px; width: 200px;" src="https://cdn.discordapp.com/attachments/766596576192888902/812862495261589515/pixlr-bg-result.png"/>
+      <ion-item  style="margin-top: 10%;">
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input formControlName="username" type="text" required></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input formControlName="password" type="password" required></ion-input>
+      </ion-item>
+     
+      
+  
+      <ion-row>
+        <ion-col>
+          <ion-button style="margin-top: 5%; margin-left: 25%; width: 50%;" type="submit" color="success" shape="full" expand="block">Log-in</ion-button>
+          <ion-button style="margin-top: 2%; margin-left: 25%; width: 50%;" color="success" shape="full" expand="block">Register</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  
+     
+
+  </ion-content>
+
+  <ion-content *ngIf="session">
+
+    <h1  style="text-align: center; margin-top: 20%;">¿Qué desea hacer?</h1>
+    <ion-row>
+      <ion-col>
+        <ion-button *ngIf="!isAdmin" style="margin-top: 5%; margin-left: 25%; width: 50%;" type="submit"  (click)="ownTask()"color="success" shape="full" expand="block">Ver Tareas</ion-button>
+        <ion-button *ngIf="isAdmin" style="margin-top: 5%; margin-left: 25%; width: 50%; height: 60px;" (click)="AllTask()" color="success" shape="full" expand="block">Ver tareas <br/> de los <br/>empleados</ion-button>
+        <ion-button style="margin-top: 5%; margin-left: 25%; width: 50%;" color="success" (click)="warHouses()" shape="full" expand="block">Almacénes</ion-button>
+        <ion-button style="margin-top: 5%; margin-left: 25%; width: 50%;" color="success" (click)="products()" shape="full" expand="block">Productos</ion-button>
+        <ion-button *ngIf="isAdmin" style="margin-top: 5%; margin-left: 25%; width: 50%;" (click)="employees()" color="success" shape="full" expand="block">Empleados</ion-button>
+        <ion-button style="margin-top: 5%; margin-left: 25%; width: 50%;" (click)="logOut()" color="success" shape="full" expand="block">Log-out</ion-button>
+      </ion-col>
+    </ion-row>
+      <img style="margin-top: 40%; margin-left: 85%; height: 40px; width: 40px;" src="https://cdn.discordapp.com/attachments/766596576192888902/812862495261589515/pixlr-bg-result.png"/>
   </ion-content>

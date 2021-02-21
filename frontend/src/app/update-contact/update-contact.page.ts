@@ -78,7 +78,7 @@ export class UpdateContactPage implements OnInit {
 
         
       }
-      this.service.updateProduct(id, contact)
+      this.service.updateContact(id, contact)
       this.router.navigateByUrl("home")
     }
   }
