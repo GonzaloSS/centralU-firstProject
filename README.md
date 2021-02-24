@@ -1,5 +1,5 @@
 ![enter image description here](https://img.shields.io/badge/Author-Nestorbd-yellow)
-![enter image description here](https://img.shields.io/badge/Author-GonzaloSS-green)
+![enter image description here](https://img.shields.io/badge/Author-GonzaloSS-purple)
 
 # centralU-firstProject
 
