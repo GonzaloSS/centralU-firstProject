@@ -53,8 +53,8 @@ export class InventoryService {
       {
         jsonrpc: "2.0", params: {
           'name': inventory.name,
-          'location_ids': inventory.location_ids,
-          'product_ids': inventory.product_ids,
+          'location_ids': [inventory.location_ids],
+          'product_ids': [inventory.product_ids],
           'accounting_date': inventory.accounting_date,
           'exhausted':inventory.exhausted,
           'prefill_counted_quantity': inventory.prefill_counted_quantity
