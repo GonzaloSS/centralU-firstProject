@@ -27,40 +27,41 @@ Here will be shown how the project database is organized.
 
 * **Entities**
 
- In the database you will need to have the following fields:
+   In the database you will need to have the following fields:
+ 
+   - Controller, who will have a primary key, name and password.
 
- - Controller, who will have a primary key, name and password.
+   - Responsible, who will have a primary key, name and password.
 
- - Responsible, who will have a primary key, name and password.
+   - Operator, who will have a primary key, name and password.
 
- - Operator, who will have a primary key, name and password.
+   - Inventory, will have a primary key, name, date and status.
 
- - Inventory, will have a primary key, name, date and status.
+   - Products, will have a primary key, name, bar code and value.
+   
+   - Locations, will have a primary key and name.
 
- - Products, will have a primary key, name, bar code and value.
+   - Project, will have a primary key and name.
 
- - Locations, will have a primary key and name.
-
- - Project, will have a primary key and name.
-
- - Task, will have a primary key, name, date and status.
+   - Task, will have a primary key, name, date and status. 
+   
 
  * **Relatioships**
 
- - A controller can create zero or many inventories, but an inventory can only be created by a controller.
+   - A controller can create zero or many inventories, but an inventory can only be created by a controller.
 
- - In an inventory, data for multiple products and locations will be saved.
+   - In an inventory, data for multiple products and locations will be saved.
 
- - Creating an inventory will also create a project, in which there will be several tasks and also an inventory manager will be assigned who will also manage the project.
+   - Creating an inventory will also create a project, in which there will be several tasks and also an inventory manager will be assigned who will also manage the project.
 
- - Tasks will be assigned to operators where you will be told which products and locations you will need to review.
+   - Tasks will be assigned to operators where you will be told which products and locations you will need to review.
 
- - An operator can have zero or many tasks.
+   - An operator can have zero or many tasks.
 
- - The products are will save in a location or in several locations.
+   - The products are will save in a location or in several locations.
 
  ### E/R Diagram
- ![E/R Diagram]()
+ ![E/R Diagram](https://github.com/GonzaloSS/centralU-firstProject/blob/develop/Documentation/DataModel/Proyecto%20Inventario%20C.U%20-%20E_R.png)
 
  ### Step from E/R to relational model
  Bold words are primary keys and those with an asterisk are foreign keys.
@@ -116,11 +117,12 @@ Here will be shown how the project database is organized.
         - id_product is products foreign key.
 
 ### Relational Model
-![Relational Model]()
+![Relational Model](https://github.com/GonzaloSS/centralU-firstProject/blob/develop/Documentation/DataModel/Proyecto%20Inventario%20C.U%20-%20Modelo%20Relacional.png)
 
 ## User Requirements
 
 ## Use Case
+![Use Case](https://github.com/GonzaloSS/centralU-firstProject/blob/develop/Documentation/DataModel/Proyecto%20Inventario%20C.U%20-%20Diagrama%20de%20caso%20de%20uso.png)
 
 ## Interfaces
 
