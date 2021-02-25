@@ -121,6 +121,20 @@ Here will be shown how the project database is organized.
 
 ## User Requirements
 
+* Platform
+
+     - Mobile application.
+
+* You cannot use the app if you are not registered.
+* Those who are going to use the application are operators.
+
+     - The operators will be in charge of counting products, so they will have to know where they are and the products they have to count.
+     - Operators will not be able to change the data, only send data to be verified by a inventory manager.
+
+*  Controller will be able to create inventories that be assigned to a responsible.
+*  Responsible will be able to create tasks that will be assigned to the operators.
+*  Controller and responsible may be the same person.
+
 ## Use Case
 ![Use Case](https://github.com/GonzaloSS/centralU-firstProject/blob/develop/Documentation/DataModel/Proyecto%20Inventario%20C.U%20-%20Diagrama%20de%20caso%20de%20uso.png)
 
@@ -133,6 +147,10 @@ Here will be shown how the project database is organized.
 ## Installation manual
 
 ## Comparison of technologies
+
+### ODOO
+
+Odoo is a suite of business management software tools including CRM, e-commerce, billing, accounting, manufacturing, warehouse, project management, and inventory management to name a few. The Community version is a libre software, licensed under the GNU LGPLv3. The Enterprise version has proprietary extra features and services. The source code for the framework and core ERP modules is curated by the Belgium-based Odoo S.A. Odoo is available for both on-premise and ready to use SaaS environment.
 
 ### IONIC
 
@@ -203,6 +221,8 @@ You can see my [planning](https://github.com/GonzaloSS/centralU-firstProject/pro
 
 ## 🔧 Tools
 
-* [Ionic-Angular](https://ionicframework.com/docs/angular/your-first-app) -- For [frontend](https://github.com/Nestorbd/Full-Stack-Proyect/tree/master/E-commerce/frontend/e-commerce)
+* [Ionic-Angular](https://ionicframework.com/docs/angular/your-first-app) -- For [frontend](https://github.com/GonzaloSS/centralU-firstProject/tree/master/frontend)
+* [Odoo 14](https://www.odoo.com/es_ES/) -- Windows version
+* [Visual Studio Code](https://code.visualstudio.com)
 
 ## 🤝 Acknowledgments
