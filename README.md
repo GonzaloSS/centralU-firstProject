@@ -138,6 +138,14 @@ Here will be shown how the project database is organized.
 ## Use Case
 ![Use Case](https://github.com/GonzaloSS/centralU-firstProject/blob/develop/Documentation/DataModel/Proyecto%20Inventario%20C.U%20-%20Diagrama%20de%20caso%20de%20uso.png)
 
+## Architecture
+The client will be installed on a mobile device from a launcher, no matter what operating system the mobile has.
+In the client, each operator will be able to see his tasks and do them, when finished he must send the information to the server.
+
+The server will have to be installed on a computer with windows or ubuntu operating system, and to install it you must follow the installation manual.
+The server, which in this case is odoo, has its own interfaces to manipulate data and thanks to this feature the manager will be able to create inventories, tasks and assign them to the operators who will receive it in the client.
+
+
 ## Interfaces
 
 ### Mockup
@@ -145,6 +153,72 @@ Here will be shown how the project database is organized.
 ### Usability
 
 ## Installation manual
+### Backend
+First, we have to go to the official odoo page and download the [odoo 14 community for windows](https://www.odoo.com/es_ES/page/download).
+
+Then, we run the file .Exe we downloaded and installed odoo, something like this will appear to us:
+
+![Choose language]()
+We choose a language and give it to Ok.
+
+On the next page we give you to accept:
+![Welcome Odoo page]()
+
+Here we give to I agree:
+![I agree]()
+
+We select the two we give to next and we install it:
+![Next and install]()
+
+When you finish installing we give it to finish and odoo will open in http://localhost:8069.
+
+With this, we would already have odoo installed, now we will install the necessary module for the app to work.
+
+First, clone this repository somewhere on your pc with:
+
+```
+git clone https://github.com/GonzaloSS/centralU-firstProject.git
+
+```
+When finished, we go to the backend folder and copy what is inside it.
+
+Now, we head to the place where odoo is unloaded, it is normally intala in C:\Program Files\Odoo14.
+
+Once here, we open the server folder, then addons and paste there is what we had copied earlier.
+
+Now, we open the windows services application, look for the odoo service and restart it.
+![service restart]()
+
+And with this we would have the server fully installed and ready for the client application.
+
+### Frontend
+To install the client we have to go back to the centralU-firstProject root directory and do what
+following:
+
+```
+cd centralU-firstProject/frontend
+npm install
+
+```
+
+And the client would be installed, now to start the application first we have
+that boot the server and then the client, below I explain how it is done.
+First you have to go back to the E-commerce root directory and do the following:
+
+```
+cd centralU-firstProject/backend
+node server.js
+
+```
+
+Now we open another console in the root directory and do this:
+
+```
+cd centralU-firstProject/frontend
+ionic serve
+
+```
+And that's it, we already have our application installed and working.
 
 ## Comparison of technologies
 
