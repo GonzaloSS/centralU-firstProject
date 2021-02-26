@@ -263,11 +263,11 @@ Once the session is started you can see this menu:
 
 In this menu you can select several options:
 
-* [Ver Tareas](###Ver-Tareas)
-* [Productos](###Productos)
-* [Inventario](###Inventario)
-* [LOG-OUT](###LOG-OUT)
-* [Side menu](###Side-menu)
+* [Ver Tareas](#Ver-Tareas)
+* [Productos](#Productos)
+* [Inventario](#Inventario)
+* [LOG-OUT](#LOG-OUT)
+* [Side menu](#Side-menu)
 
 ### Ver Tareas
 In this option we can see our tasks. These are divided into to-do, in-progress and done:
