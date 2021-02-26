@@ -185,6 +185,8 @@ This screen will be visible only if you log in.
 
 *Product edit form*
 
+* [PROTOTYPE](https://xd.adobe.com/view/1d9327db-bafa-4c44-7b7e-42f9a0da4bec-6ba2/?fullscreen&hints=off)
+
 ### Usability
 
 * Useful: that it is capable of fulfilling the specific tasks for which it has been designed. Example (Being an admin you can do a lot of features).
