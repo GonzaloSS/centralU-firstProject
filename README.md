@@ -14,6 +14,7 @@ The idea proposed for this project is to develop a mobile application for invent
 * [Use Case](#Use-Case)
 * [Interfaces](#Interfaces)
 * [Installation manual](#Installation-manual)
+* [User manual](#User-manual)
 * [Comparison of technologies](#Comparison-of-technologies)
 * [Planning](#Planing)
 * [Tools](#-Tools)
