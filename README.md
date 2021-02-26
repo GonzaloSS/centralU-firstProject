@@ -229,20 +229,9 @@ npm install
 
 ```
 
-And the client would be installed, now to start the application first we have
-that boot the server and then the client, below I explain how it is done.
-First you have to go back to the E-commerce root directory and do the following:
+Finally, we start the client with the following command.
 
 ```
-cd centralU-firstProject/backend
-node server.js
-
-```
-
-Now we open another console in the root directory and do this:
-
-```
-cd centralU-firstProject/frontend
 ionic serve
 
 ```
@@ -368,9 +357,9 @@ for AngularJS. Adem as, is free and open source.
 | Access to device features | Very spacious, although not complete | Full | Data is more secure | 
 | Visual appearance and user experience | Very good, simulating behaviors with HTML5 and CSS3, although it may not be optimal | May be optimal |
 
-## Plannig
+## Planning
 
-You can see my [planning](https://github.com/GonzaloSS/centralU-firstProject/projects/1)
+You can see our [planning](https://github.com/GonzaloSS/centralU-firstProject/projects/1)
 
 ## 🔧 Tools
 
