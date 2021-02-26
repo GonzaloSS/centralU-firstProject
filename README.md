@@ -152,6 +152,33 @@ The server, which in this case is odoo, has its own interfaces to manipulate dat
 
 ### Usability
 
+* Useful: that it is capable of fulfilling the specific tasks for which it has been designed. Example (Being an admin you can do a lot of features).
+
+![Menu admin]()
+
+* Easy to use: it must be efficient, fast and with as few errors as possible. Comfortable to use. You can understand easily the menus and the app.
+
+![Menu scroll admin ]()
+
+* Easy to learn: no excessive time is needed to learn how to work with the application and it is easy to remember how it works. Easy to understand.
+* Elegant in its design: to favour the user's perception and emotions.
+* It is efficient: It measures the effort to achieve an objective.
+* The user must be able to initiate actions and control tasks.
+
+![All tasks]()
+
+* The user must be able to customize the interface, the use can change the theme between light and dark.
+* Simplicity of design No overloading the interface with unnecessary elements The information in the interface will be the minimum essential The interface will be SIMPLE and easy to learn and remember.
+* Feedback Appropriate response to user actions.
+* Colour. Colour should be considered as an additional tool in design, not a basic need. A limited set of colours is recommended, with subtle, complementary, muted colours being most appropriate in the design of business and academic interfaces.
+* Consistency. Whenever possible, the interface should be consistent. This implies that similar operations will have to be activated in the same way. Furthermore, ergonomics should be taken into account through menus, action bars and icons that are easy to access and identify.
+* Usable. The user is able to initiate actions and control them, such as start and close session.
+* Recallability. The interface must include mechanisms to allow users to recover from errors. Example (you as admin can edit the tracking of the user's order, you can cancel and recover from errors.
+* Minimal surprise. The user will know at all times what he is doing, so he will not take no surprise.
+* Security. The master password is stored in the database encrypted with bcrypt and the user password and token are base64-encoded.
+
+![Security]()
+
 ## Installation manual
 ### Backend
 First, we have to go to the official odoo page and download the [odoo 14 community for windows](https://www.odoo.com/es_ES/page/download).
@@ -219,6 +246,57 @@ ionic serve
 
 ```
 And that's it, we already have our application installed and working.
+
+## User manual
+
+In this section we will learn how to navigate the application and use it.
+
+The first thing we will find when we start the application is with the following screen:
+
+![Login]()
+
+In this screen we can log in with the credentials that the company gives us.
+Once the session is started you can see this menu:
+
+![Initial Menu]()
+
+In this menu you can select several options:
+
+* [Ver Tareas](###Ver-Tareas)
+* [Productos](###Productos)
+* [Inventario](###Inventario)
+* [LOG-OUT](###LOG-OUT)
+* [Side menu](###Side-menu)
+
+### Ver Tareas
+In this option we can see our tasks. These are divided into to-do, in-progress and done:
+
+![Tasks]()
+
+### Productos
+Here you can see the products that the company has:
+
+![List Products]()
+
+If you click on a product you will get more information:
+
+![A Producte]()
+
+### Inventario
+Here you can see the current inventory adjustment.
+
+![Inventory]()
+
+### LOG-OUT
+If you click on this button the session will be closed and we will return to the main screen.
+
+### Side menu
+If we drag the finger from left to right on any screen will come out a side menu with the same options as the main menu to make navigation easier.
+The side menu will also have an option to change the theme of the application to dark.
+
+![Side menu]()
+
+
 
 ## Comparison of technologies
 
