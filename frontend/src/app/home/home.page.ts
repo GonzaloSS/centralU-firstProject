@@ -19,101 +19,92 @@ export class HomePage implements OnInit {
   session: boolean;
   user: Login[]
   loginForm: FormGroup;
-  
-  
+
+
 
   constructor(
-    private centralService: CentralUService, 
+    private centralService: CentralUService,
     private route: Router,
     private fb: FormBuilder,
     private alertController: AlertController,
-    private localStorage: LocalStorage)  {  
-      this.loginForm = this.fb.group({
-        username: [''],
-        password: ['']
-  
-    })}
+    private localStorage: LocalStorage) {
+    this.loginForm = this.fb.group({
+      username: [''],
+      password: ['']
+
+    })
+  }
 
 
-  ngOnInit(){
-    if(localStorage.getItem("session_id")){
+  ngOnInit() {
+    if (localStorage.getItem("session_id")) {
       this.session = true
-    }else{
+    } else {
       this.session = false
     }
-    if(localStorage.getItem("isAdmin") == "true"){
+    if (localStorage.getItem("isAdmin") == "true") {
       this.isAdmin = true
-    }else{
+    } else {
       this.isAdmin = false
     }
   }
 
 
-  onFormSubmit(){
+  onFormSubmit() {
     if (!this.loginForm.valid) {
       return false;
     } else {
       let user = {
         username: this.loginForm.value.username,
         password: this.loginForm.value.password,
-    
+
 
       }
       this.centralService.loginUser(user)
-      
-     if(!this.localStorage.getItem("session_id")){
-      this.presentAlert("Password or E-mail wrong", "Login");
-      //window.location.reload()
-     }
-      
-      
- 
-      
-      
-        }
+    }
   }
-  async presentAlert(message: string, origin: string) {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Error',
-      subHeader: message,
-      message: 'Could not ' + origin + '. Try again.',
-      buttons: ['OK']
-    });
-    await alert.present();
+  // async presentAlert(message: string, origin: string) {
+  //   const alert = await this.alertController.create({
+  //     cssClass: 'my-custom-class',
+  //     header: 'Error',
+  //     subHeader: message,
+  //     message: 'Could not ' + origin + '. Try again.',
+  //     buttons: ['OK']
+  //   });
+  //   await alert.present();
+  // }
+
+  logOut() {
+    this.centralService.logOut()
   }
 
-  logOut(){
-    this.centralService.logOut() 
-  }
-
-  ownTask(){
+  ownTask() {
     this.route.navigateByUrl("see-my-own-task");
   }
-  AllTask(){
+  AllTask() {
     this.route.navigateByUrl("see-all-tasks");
   }
-  products(){
+  products() {
     this.route.navigateByUrl("products")
   }
-  inventory(){
+  inventory() {
     this.route.navigateByUrl("see-adjustment")
   }
-  employees(){
+  employees() {
     this.route.navigateByUrl("see-employees");
   }
 
- 
 
-goToAdd(){
-  this.route.navigateByUrl("/add-incidencia");
-}
-goToContacts(){
-  this.route.navigateByUrl("contacts")
-}
 
-  
+  goToAdd() {
+    this.route.navigateByUrl("/add-incidencia");
   }
+  goToContacts() {
+    this.route.navigateByUrl("contacts")
+  }
+
+
+}
 
 
 

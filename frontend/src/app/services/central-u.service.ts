@@ -151,31 +151,27 @@ setCurrentContact(id: number, name: string, company_type: string, functionn: str
     {jsonrpc: "2.0", params : { 'db': "centralU", 'login': user.username, 'password': user.password } },
     options).subscribe((data : any) =>{
      this.session = data["result"];
-     this.fail = data["message"];
-     console.log(this.session);
+     if(!this.session){
+      this.presentAlert("Password or E-mail wrong", "Login");
+     }
      localStorage.setItem('session_id', this.session["session_id"]);
      localStorage.setItem('isAdmin', this.session["is_admin"]);
      localStorage.setItem('id', this.session["user_id"]);
-     localStorage.setItem('message', this.fail)
-    //  this.presentAlert("Password or E-mail wrong", "Login");
-    //  window.location.reload()
-    }, err =>{
-      localStorage.setItem('id', this.session["user_id"]);
-      console.log(err);
-    }
-    )
+    
+     window.location.reload()
+    })
   }
 
-  // async presentAlert(message: string, origin: string) {
-  //   const alert = await this.alertController.create({
-  //     // cssClass: 'my-custom-class',
-  //     header: 'Error',
-  //     subHeader: message,
-  //     message: 'Could not ' + origin + '. Try again.',
-  //     buttons: ['OK']
-  //   });
-  //   await alert.present();
-  // }
+  async presentAlert(message: string, origin: string) {
+    const alert = await this.alertController.create({
+      // cssClass: 'my-custom-class',
+      header: 'Error',
+      subHeader: message,
+      message: 'Could not ' + origin + '. Try again.',
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
 
   
 
