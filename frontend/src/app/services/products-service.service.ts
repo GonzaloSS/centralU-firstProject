@@ -6,7 +6,14 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Products } from '../models/product';
 
+var headers = new HttpHeaders({
 
+
+  'Content-Type':'application/json',
+
+  'Accept' : 'application/json'
+
+});
 
 let postData = {
   jsonrpc: "2.0",

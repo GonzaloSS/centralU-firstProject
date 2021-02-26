@@ -7,6 +7,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 import { CookieService} from 'ngx-cookie-service';
 import { User } from '../models/user';
 import { LocalStorage } from '@ngx-pwa/local-storage';
+import { AlertController } from '@ionic/angular';
 
 
 
@@ -54,12 +55,14 @@ export class CentralUService {
   session: User[];
   session_id: string;
   sessionActive: boolean;
+  fail: any;
+  
 
   constructor(
     private httpClient: HttpClient,
     private cookieSvc: CookieService,
-    private localStorage: LocalStorage) { 
-
+    private localStorage: LocalStorage,
+    private alertController: AlertController) { 
 
     
   }
@@ -144,17 +147,37 @@ setCurrentContact(id: number, name: string, company_type: string, functionn: str
   }
 
   loginUser(user: Login){
-    this.httpClient.post("http://localhost:8069/web/session/authenticate",
+   return this.httpClient.post("http://localhost:8069/web/session/authenticate",
     {jsonrpc: "2.0", params : { 'db': "centralU", 'login': user.username, 'password': user.password } },
     options).subscribe((data : any) =>{
      this.session = data["result"];
+     this.fail = data["message"];
      console.log(this.session);
      localStorage.setItem('session_id', this.session["session_id"]);
      localStorage.setItem('isAdmin', this.session["is_admin"]);
      localStorage.setItem('id', this.session["user_id"]);
-     window.location.reload()
-    })
+     localStorage.setItem('message', this.fail)
+    //  this.presentAlert("Password or E-mail wrong", "Login");
+    //  window.location.reload()
+    }, err =>{
+      localStorage.setItem('id', this.session["user_id"]);
+      console.log(err);
+    }
+    )
   }
+
+  // async presentAlert(message: string, origin: string) {
+  //   const alert = await this.alertController.create({
+  //     // cssClass: 'my-custom-class',
+  //     header: 'Error',
+  //     subHeader: message,
+  //     message: 'Could not ' + origin + '. Try again.',
+  //     buttons: ['OK']
+  //   });
+  //   await alert.present();
+  // }
+
+  
 
   
   setCurrentContactId(id: number) {

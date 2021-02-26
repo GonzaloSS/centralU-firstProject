@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
+import { LocalStorage } from '@ngx-pwa/local-storage';
 import { Contact } from '../models/contact';
 import { Response } from '../models/incidencia';
 import { Login } from '../models/login';
@@ -18,11 +19,15 @@ export class HomePage implements OnInit {
   session: boolean;
   user: Login[]
   loginForm: FormGroup;
+  
+  
 
   constructor(
     private centralService: CentralUService, 
     private route: Router,
-    private fb: FormBuilder)  {  
+    private fb: FormBuilder,
+    private alertController: AlertController,
+    private localStorage: LocalStorage)  {  
       this.loginForm = this.fb.group({
         username: [''],
         password: ['']
@@ -56,26 +61,37 @@ export class HomePage implements OnInit {
       }
       this.centralService.loginUser(user)
       
+     if(!this.localStorage.getItem("session_id")){
+      this.presentAlert("Password or E-mail wrong", "Login");
+      //window.location.reload()
+     }
+      
       
  
       
       
         }
   }
-
+  async presentAlert(message: string, origin: string) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Error',
+      subHeader: message,
+      message: 'Could not ' + origin + '. Try again.',
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
 
   logOut(){
     this.centralService.logOut() 
   }
 
   ownTask(){
-    this.route.navigateByUrl("see-own-tasks");
+    this.route.navigateByUrl("see-my-own-task");
   }
   AllTask(){
     this.route.navigateByUrl("see-all-tasks");
-  }
-  warHouses(){
-    console.log("Warhouses")
   }
   products(){
     this.route.navigateByUrl("products")
