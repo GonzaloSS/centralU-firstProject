@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>add-adjustment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="inventoryForm" (ngSubmit)="onFormSubmit()">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input formControlName="name" type="text" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Id Localización</ion-label> 
+      <ion-input formControlName="location_ids" type="number" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Productos</ion-label>
+      <ion-select formControlName="product_ids" type="number" *ngFor="let p of products" required>
+        <ion-select-option value="p.id">{{p.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Fecha contable</ion-label>
+      <ion-input formControlName="accounting_date" type="date" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Agotado?</ion-label>
+      <ion-select formControlName="exhausted" type="number" required>
+        <ion-select-option value=1>Yes</ion-select-option>
+        <ion-select-option value=0>No</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Cantidades contadas</ion-label>
+      <ion-select formControlName="prefill_counted_quantity" type="text" required>
+        <ion-select-option value="counted">Predeterminado a stock disponible</ion-select-option>
+        <ion-select-option value="zero">Predeterminado a cero</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="primary" shape="full" expand="block">Crear ajuste de inevntario</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

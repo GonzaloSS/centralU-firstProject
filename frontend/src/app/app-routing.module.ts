@@ -70,7 +70,15 @@ const routes: Routes = [
   {
     path: 'update-employee',
     loadChildren: () => import('./user/update-employee/update-employee.module').then( m => m.UpdateEmployeePageModule)
+  },  {
+    path: 'add-adjustment',
+    loadChildren: () => import('./inventory/add-adjustment/add-adjustment.module').then( m => m.AddAdjustmentPageModule)
   },
+  {
+    path: 'see-adjustment',
+    loadChildren: () => import('./inventory/see-adjustment/see-adjustment.module').then( m => m.SeeAdjustmentPageModule)
+  },
+
 ];
 
 @NgModule({
