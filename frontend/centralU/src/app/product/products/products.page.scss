@@ -1,0 +1,27 @@
+.mat-card-header{
+    background-color:#bebebe !important;
+    border-style: groove;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 90%;
+    height: 70%;
+    padding:5px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+.mat-card{
+    background-color:#ffffff00 !important;
+    width: 90%;
+    height: 70%;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+.mat-card-content{
+    background-color:#ffffff !important;
+    border-style: initial;
+    width: 90%;
+    height: 42%;
+    margin-left: auto;
+    margin-right: auto;
+}

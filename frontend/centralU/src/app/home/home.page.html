@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <button (click)="toggleMenu()" mat-icon-button  aria-label="Example icon button with a menu icon" slot="start">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <ion-title *ngIf="!session" style="text-align: center; color: white; font-size: 35px;">Bienvenido</ion-title>
+    <ion-title *ngIf="session" style="text-align: center; color: white; font-size: 35px;">Hola de nuevo!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content *ngIf="!session">
+
+
+  <form  [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
+    <img style="margin-top: 10%; margin-left: 24%; height: 170px; width: 200px;"
+      src="https://cdn.discordapp.com/attachments/766596576192888902/812862495261589515/pixlr-bg-result.png" />
+    <ion-item style="margin-top: 10%;">
+      <mat-form-field  appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input matInput [type]="hide ? 'username' : 'text'"  formControlName="username"  required>
+        
+      </mat-form-field>
+    </ion-item>
+
+    <ion-item>
+      <mat-form-field  appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password"  required>
+        <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </ion-item>
+
+
+
+    <ion-row>
+      <ion-col>
+        <button mat-flat-button
+          style="background-color: rgb(87, 202, 87) ; margin-top: 5%; margin-left: 25%; width: 50%;" type="submit"
+          shape="full" expand="block">Log-in</button>
+
+      </ion-col>
+    </ion-row>
+  </form>
+
+
+
+</ion-content>
+
+<ion-content *ngIf="session">
+
+
+  <h1 style="text-align: center; margin-top: 20%;">¿Qué desea hacer?</h1>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label>Toggle Dark Theme</ion-label>
+        <ion-toggle (ionChange)="onToggleColorTheme($event)"></ion-toggle>
+      </ion-item>
+      <ion-button *ngIf="!isAdmin" style="margin-top: 5%; margin-left: 25%; width: 50%;" type="submit"
+        (click)="ownTask()" color="success" shape="full" expand="block">Ver Tareas</ion-button>
+      <ion-button *ngIf="isAdmin" style="margin-top: 5%; margin-left: 25%; width: 50%; height: 60px;"
+        (click)="AllTask()" color="success" shape="full" expand="block">Ver tareas <br /> de los <br />empleados
+      </ion-button>
+      <ion-button style="margin-top: 5%; margin-left: 25%; width: 50%;" color="success" (click)="products()"
+        shape="full" expand="block">Productos</ion-button>
+      <ion-button style="margin-top: 5%; margin-left: 25%; width: 50%;" color="success" (click)="inventory()"
+        shape="full" expand="block">Inventario</ion-button>
+      <ion-button *ngIf="isAdmin" style="margin-top: 5%; margin-left: 25%; width: 50%;" (click)="employees()"
+        color="success" shape="full" expand="block">Empleados</ion-button>
+      <ion-button style="margin-top: 5%; margin-left: 25%; width: 50%;" (click)="logOut()" color="success" shape="full"
+        expand="block">Log-out</ion-button>
+    </ion-col>
+  </ion-row>
+  <img style="margin-top: 40%; margin-left: 85%; height: 40px; width: 40px;"
+    src="https://cdn.discordapp.com/attachments/766596576192888902/812862495261589515/pixlr-bg-result.png" />
+</ion-content>
