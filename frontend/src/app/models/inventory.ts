@@ -4,7 +4,9 @@ export interface Inventory {
     name: string;
     accounting_date: Date;
     product_ids: number;
+    product_name: string;
     location_ids: number;
+    location_name: string;
     prefill_counted_quantity: string;
     exhausted: number;
     state: string;

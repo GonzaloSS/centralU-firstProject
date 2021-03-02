@@ -61,6 +61,7 @@ export class InventoryService {
         }
       },
       { headers: this.headers }).subscribe(data => {
+        console.log(inventory.location_ids, inventory.product_ids)
         console.log(data);
       }, err => {
         console.log(err);

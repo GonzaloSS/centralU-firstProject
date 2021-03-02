@@ -14,12 +14,13 @@
       <ion-label position="floating">Id Localización</ion-label> 
       <ion-input formControlName="location_ids" type="number" required></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item >
       <ion-label>Productos</ion-label>
-      <ion-select formControlName="product_ids" type="number" *ngFor="let p of products" required>
-        <ion-select-option value="p.id">{{p.name}}</ion-select-option>
+      <ion-select formControlName="product_ids" type="number"  required>
+        <ion-select-option value="{{p.id}}" *ngFor="let p of products">{{p.name}}</ion-select-option>
       </ion-select>
     </ion-item>
+
     <ion-item>
       <ion-label position="floating">Fecha contable</ion-label>
       <ion-input formControlName="accounting_date" type="date" required></ion-input>
