@@ -57,8 +57,6 @@ export class HomePage implements OnInit {
       let user = {
         username: this.loginForm.value.username,
         password: this.loginForm.value.password,
-
-
       }
       this.centralService.loginUser(user)
     }
