@@ -57,7 +57,9 @@ export class AddAdjustmentPage implements OnInit {
         exhausted: parseInt(this.inventoryForm.value.exhausted),
         prefill_counted_quantity: this.inventoryForm.value.prefill_counted_quantity,
         date:null,
-        state:null
+        state:null,
+        product_name: null,
+        location_name: null
       }
       console.log(inventory)
       this.inventoryService.addAdjustment(inventory);
