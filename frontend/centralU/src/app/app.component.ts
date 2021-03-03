@@ -26,4 +26,13 @@ export class AppComponent implements OnInit {
      
     }
   }
+
+  onToggleColorTheme(event) {
+    if(event.detail.checked){
+      document.body.setAttribute('color-theme','dark');
+    }else {
+      document.body.setAttribute('color-theme','light');
+    }
+  }
+
 }

@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { SeeMyOwnTaskPageRoutingModule } from './see-my-own-task-routing.module';
-
+import { MaterialModule } from '../../material.module';
 import { SeeMyOwnTaskPage } from './see-my-own-task.page';
 
 @NgModule({
@@ -13,6 +13,7 @@ import { SeeMyOwnTaskPage } from './see-my-own-task.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    MaterialModule,
     SeeMyOwnTaskPageRoutingModule
   ],
   declarations: [SeeMyOwnTaskPage]

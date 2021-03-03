@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <button (click)="toggleMenu()" mat-icon-button  aria-label="Example icon button with a menu icon" slot="start">
+      <mat-icon>menu</mat-icon>
+    </button>
     <ion-title>Empleados</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -15,7 +18,8 @@
         <ion-card-subtitle>Job: {{u.function}}</ion-card-subtitle>
         <ion-card-subtitle>E-mail: {{u.login}}</ion-card-subtitle>
         <ion-item>
-          <p slot="end">Add task</p>
+         
+          <ion-icon (click)="seeEmployeeTask(u.id)" color="black" name="accessibility" slot="end"></ion-icon>
           <ion-icon (click)="newTask(u.id)" color="black" name="add" slot="end"></ion-icon>
         </ion-item>
       </ion-card-header>

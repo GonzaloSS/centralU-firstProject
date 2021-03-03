@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 import { Products } from '../../models/product';
 import { ProductsServiceService } from '../../services/products-service.service';
 
@@ -12,14 +13,15 @@ export class ProductDetailsPage implements OnInit {
   product: Products[];
   constructor(
     private productService: ProductsServiceService,
-    private router: Router
+    private router: Router,
+    private menu: MenuController
   ) { }
 
   ngOnInit() {
     console.log("hola llega aki");
     this.getASingleProduct();
   }
-
+ 
 
   getASingleProduct(){
     console.log("getAllContact en serio?");

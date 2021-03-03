@@ -63,6 +63,10 @@ const routes: Routes = [
     path: 'see-adjustment',
     loadChildren: () => import('./inventory/see-adjustment/see-adjustment.module').then( m => m.SeeAdjustmentPageModule)
   },
+  {
+    path: 'see-employee-task',
+    loadChildren: () => import('./task/see-employee-task/see-employee-task.module').then( m => m.SeeEmployeeTaskPageModule)
+  },
 ];
 
 @NgModule({

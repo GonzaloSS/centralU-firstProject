@@ -64,6 +64,24 @@ export class TaskService {
     );
   }
 
+  getTaskAboutAEmployee(): Observable<Task[]> {
+    console.log(this.currentIdUser)
+    this.headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "X-Openerp-Session-Id": localStorage.getItem('session_id')
+  })
+ 
+    return this.httpClient.post<Task[]>("http://localhost:8069/api/getEmployeeTask", 
+    
+    {jsonrpc: "2.0", params : { "user_id": this.currentIdUser} },
+      {headers: this.headers})
+    .pipe(
+      
+      tap(incidencias => console.log('fetched Taskss')),
+      catchError(this.handleError('getTask', []))
+    );
+  }
+
 
   addTask(user_id: number, task: Task) {
     this.headers = new HttpHeaders({
@@ -107,6 +125,50 @@ export class TaskService {
       });
 
   }
+
+
+  changeStage(id: number) {
+    console.log(id)
+    this.headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "X-Openerp-Session-Id": localStorage.getItem('session_id')
+  })
+    this.httpClient.post("http://localhost:8069/api/updateTask",
+      {
+        jsonrpc: "2.0", params: {
+          "id": id, "stage_id": 2
+        }
+      },
+      { headers: this.headers }).subscribe(data => {
+        console.log(data);
+        window.location.reload();
+      }, err => {
+        console.log(err);
+      });
+
+  }
+
+  changeStageWait(id: number) {
+    console.log(id)
+    this.headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "X-Openerp-Session-Id": localStorage.getItem('session_id')
+  })
+    this.httpClient.post("http://localhost:8069/api/updateTask",
+      {
+        jsonrpc: "2.0", params: {
+          "id": id, "stage_id": 6
+        }
+      },
+      { headers: this.headers }).subscribe(data => {
+        console.log(data);
+        window.location.reload();
+      }, err => {
+        console.log(err);
+      });
+
+  }
+
 
   deleteTask(id: number){
     this.headers = new HttpHeaders({
