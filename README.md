@@ -12,10 +12,11 @@ The idea proposed for this project is to develop a mobile application for invent
 * [Data model](#Data-Model)
 * [User Requirements](#User-Requirements)
 * [Use Case](#Use-Case)
+* [UML Diagram](#UML-Diagram)
+* [Architecture](#Architecture)
 * [Interfaces](#Interfaces)
 * [Installation manual](#Installation-manual)
 * [User manual](#User-manual)
-* [Architecture](#Architecture)
 * [Comparison of technologies](#Comparison-of-technologies)
 * [Planning](#Planing)
 * [Tools](#-Tools)
@@ -139,6 +140,10 @@ Here will be shown how the project database is organized.
 
 ## Use Case
 ![Use Case](https://github.com/GonzaloSS/centralU-firstProject/blob/develop/Documentation/DataModel/Proyecto%20Inventario%20C.U%20-%20Diagrama%20de%20caso%20de%20uso.png)
+
+#UML Diagram
+
+![UML](https://github.com/GonzaloSS/centralU-firstProject/blob/2ndProject/Documentation/UML/Proyecto%20Inventario%20C.U%20-%20UML%20Diagram.png)
 
 ## Architecture
 The client will be installed on a mobile device from a launcher, no matter what operating system the mobile has.
