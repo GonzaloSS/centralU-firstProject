@@ -139,7 +139,7 @@ setCurrentContact(id: number, name: string, company_type: string, functionn: str
      localStorage.setItem('isAdmin', this.session["is_admin"]);
      localStorage.setItem('id', this.session["user_id"]);
     
-     window.location.reload()
+     //window.location.reload()
     })
   }
 

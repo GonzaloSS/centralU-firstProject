@@ -7,11 +7,13 @@ import { IonicModule } from '@ionic/angular';
 import { UpdateProductPageRoutingModule } from './update-product-routing.module';
 
 import { UpdateProductPage } from './update-product.page';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     IonicModule,
     UpdateProductPageRoutingModule

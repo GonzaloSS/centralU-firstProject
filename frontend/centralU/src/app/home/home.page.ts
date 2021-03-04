@@ -65,7 +65,9 @@ export class HomePage implements OnInit {
 
       }
       this.centralService.loginUser(user)
+      return user;
     }
+    
   }
 
 

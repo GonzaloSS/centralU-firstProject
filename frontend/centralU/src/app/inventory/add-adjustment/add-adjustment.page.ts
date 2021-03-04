@@ -64,6 +64,7 @@ export class AddAdjustmentPage implements OnInit {
       console.log(inventory)
       this.inventoryService.addAdjustment(inventory);
       this.router.navigateByUrl("home");
+      return inventory;
     }
   }
 }

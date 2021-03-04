@@ -7,7 +7,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { HomePageRoutingModule } from './home-routing.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MaterialModule } from '../material.module';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -17,7 +17,8 @@ import { MaterialModule } from '../material.module';
     MatButtonModule,
     IonicModule,
     HomePageRoutingModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   exports: [
       MatButtonModule

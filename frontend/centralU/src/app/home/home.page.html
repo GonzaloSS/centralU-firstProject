@@ -18,7 +18,7 @@
     <ion-item style="margin-top: 10%;">
       <mat-form-field  appearance="fill">
         <mat-label>Enter your email</mat-label>
-        <input matInput [type]="hide ? 'username' : 'text'"  formControlName="username"  required>
+        <input matInput [type]="hide ? 'username' : 'text'"  formControlName="username" id="username" required>
         
       </mat-form-field>
     </ion-item>
@@ -26,8 +26,8 @@
     <ion-item>
       <mat-form-field  appearance="fill">
         <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password"  required>
-        <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password" id="password" required>
+        <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" id="login">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
       </mat-form-field>

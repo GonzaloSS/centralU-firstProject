@@ -60,6 +60,7 @@ export class AddProductPage implements OnInit {
       console.log(products)
       this.productService.addProduct(products)
       this.router.navigateByUrl("home")
+      return products;
     }
   }
 

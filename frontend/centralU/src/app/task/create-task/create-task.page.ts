@@ -52,6 +52,7 @@ export class CreateTaskPage implements OnInit {
       console.log(task)
       this.taskService.addTask(this.user_id, task)
       this.router.navigateByUrl("home")
+      return task;
     }
   }
 }
