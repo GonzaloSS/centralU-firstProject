@@ -141,7 +141,7 @@ Here will be shown how the project database is organized.
 ## Use Case
 ![Use Case](https://github.com/GonzaloSS/centralU-firstProject/blob/develop/Documentation/DataModel/Proyecto%20Inventario%20C.U%20-%20Diagrama%20de%20caso%20de%20uso.png)
 
-#UML Diagram
+# UML Diagram
 
 ![UML](https://github.com/GonzaloSS/centralU-firstProject/blob/2ndProject/Documentation/UML/Proyecto%20Inventario%20C.U%20-%20UML%20Diagram.png)
 
