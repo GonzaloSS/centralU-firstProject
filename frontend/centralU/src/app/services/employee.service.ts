@@ -22,6 +22,30 @@ export class EmployeeService {
     private httpClient: HttpClient
   ) { }
 
+
+
+  addUser(user: User) {
+    this.headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "X-Openerp-Session-Id": localStorage.getItem('session_id')
+  })
+    this.httpClient.post("http://localhost:8069/api/createUser",
+      {
+        jsonrpc: "2.0", params: {
+          'name': user.name, 'login': user.login,
+          'function': user.function, 'password': user.password,
+        }
+      },
+      { headers: this.headers }).subscribe(data => {
+        console.log(data);
+      }, err => {
+        console.log(err);
+      });
+
+  }
+
+
+  
   getUsers(): Observable<User[]> {
 
     this.headers = new HttpHeaders({

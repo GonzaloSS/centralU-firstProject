@@ -30,7 +30,13 @@ export class SeeAllTaskPage implements OnInit {
     this.menu.open();
   }
 
+  endATask(id: number){
+    this.taskService.endStage(id);
+  }
 
+  addTask(){
+    this.router.navigateByUrl("create-task")
+  }
   getAllTask(){
     console.log("getAllTask");
     

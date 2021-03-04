@@ -83,7 +83,7 @@ export class TaskService {
   }
 
 
-  addTask(user_id: number, task: Task) {
+  addTask(task: Task) {
     this.headers = new HttpHeaders({
       "Content-Type": "application/json",
       "X-Openerp-Session-Id": localStorage.getItem('session_id')
@@ -91,13 +91,13 @@ export class TaskService {
     this.httpClient.post("http://localhost:8069/api/createTask",
       {
         jsonrpc: "2.0", params: {
-          "name":task.name, "user_id": user_id,
+          "name":task.name, "user_id": task.user_id,
            "description":task.description, "stage_id": 2,
             "date_deadline": task.date_deadline
         }
       },
       { headers: this.headers }).subscribe(data => {
-        console.log(task.name, user_id, task.description)
+        console.log(task.name, task.user_id, task.description)
         console.log(data);
       }, err => {
         console.log(err);
@@ -137,6 +137,27 @@ export class TaskService {
       {
         jsonrpc: "2.0", params: {
           "id": id, "stage_id": 2
+        }
+      },
+      { headers: this.headers }).subscribe(data => {
+        console.log(data);
+        window.location.reload();
+      }, err => {
+        console.log(err);
+      });
+
+  }
+
+  endStage(id: number) {
+    console.log(id)
+    this.headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "X-Openerp-Session-Id": localStorage.getItem('session_id')
+  })
+    this.httpClient.post("http://localhost:8069/api/updateTask",
+      {
+        jsonrpc: "2.0", params: {
+          "id": id, "stage_id": 4
         }
       },
       { headers: this.headers }).subscribe(data => {

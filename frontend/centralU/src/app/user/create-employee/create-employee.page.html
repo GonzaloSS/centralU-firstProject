@@ -1,9 +1,34 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>createEmployee</ion-title>
+    <button (click)="toggleMenu()" mat-icon-button  aria-label="Example icon button with a menu icon" slot="start">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <ion-title>Crear un nuevo empleado</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input formControlName="name" type="text" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input formControlName="login" type="email" required></ion-input>
+    </ion-item> 
+    <ion-item>
+      <ion-label position="floating">Job</ion-label>
+      <ion-input formControlName="function" type="text" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input formControlName="password" type="password" required></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="primary" shape="full" expand="block">Add a new user</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>
