@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { SeeEmployeesPageRoutingModule } from './see-employees-routing.module';
 
 import { SeeEmployeesPage } from './see-employees.page';
+import { MaterialModule } from 'src/app/material.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    MaterialModule,
     SeeEmployeesPageRoutingModule
   ],
   declarations: [SeeEmployeesPage]

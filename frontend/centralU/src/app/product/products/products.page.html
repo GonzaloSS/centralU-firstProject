@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>products</ion-title>
+    <button (click)="toggleMenu()" mat-icon-button  aria-label="Example icon button with a menu icon" slot="start">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <ion-title>Productos</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -9,7 +12,7 @@
     <ion-row >
       <ion-col size-lg="6" size-md="6"size="12" *ngFor="let p of product" id="products" >
 
-        <mat-card (click) = "goToDetails(p.id)">
+        <mat-card (click) = "goToDetails(p.id)"  class="mat-elevation-z0 outline">
           <mat-card-header color="medium">
             <img mat-card-image src="http://localhost:8069/web/image?model=product.template&field=image_128&id={{p.id}}&unique=" alt="Photo of a Product">
             

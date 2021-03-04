@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 import { Products } from '../../models/product';
 import { ProductsServiceService } from '../../services/products-service.service';
 
@@ -13,7 +14,8 @@ export class ProductsPage implements OnInit {
   product: Products[];
   constructor(
     private productService: ProductsServiceService,
-    private router: Router
+    private router: Router,
+    private menu: MenuController
   ) { }
 
   ngOnInit() {
@@ -23,6 +25,10 @@ export class ProductsPage implements OnInit {
   }else{
     this.router.navigateByUrl("home")
   }
+  }
+
+  toggleMenu() {
+    this.menu.open();
   }
 
   goToDetails(id: number){

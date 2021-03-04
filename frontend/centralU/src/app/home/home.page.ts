@@ -73,9 +73,6 @@ export class HomePage implements OnInit {
 
   toggleMenu() {
     this.menu.open();
-
-     
-
   }
 
   
@@ -98,7 +95,7 @@ export class HomePage implements OnInit {
     this.route.navigateByUrl("see-my-own-task");
   }
   AllTask() {
-    this.route.navigateByUrl("see-all-tasks");
+    this.route.navigateByUrl("see-all-task");
   }
   products() {
     this.route.navigateByUrl("products")
@@ -120,13 +117,7 @@ export class HomePage implements OnInit {
   }
 
 
-  onToggleColorTheme(event) {
-    if(event.detail.checked){
-      document.body.setAttribute('color-theme','dark');
-    }else {
-      document.body.setAttribute('color-theme','light');
-    }
-  }
+
 }
 
 

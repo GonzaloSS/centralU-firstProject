@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SeeAllTaskPageRoutingModule } from './see-all-task-routing.module';
+import { SeeEmployeeTaskPageRoutingModule } from './see-employee-task-routing.module';
 
-import { SeeAllTaskPage } from './see-all-task.page';
+import { SeeEmployeeTaskPage } from './see-employee-task.page';
 import { MaterialModule } from 'src/app/material.module';
 
 @NgModule({
@@ -15,8 +15,8 @@ import { MaterialModule } from 'src/app/material.module';
     FormsModule,
     IonicModule,
     MaterialModule,
-    SeeAllTaskPageRoutingModule
+    SeeEmployeeTaskPageRoutingModule
   ],
-  declarations: [SeeAllTaskPage]
+  declarations: [SeeEmployeeTaskPage]
 })
-export class SeeAllTaskPageModule {}
+export class SeeEmployeeTaskPageModule {}

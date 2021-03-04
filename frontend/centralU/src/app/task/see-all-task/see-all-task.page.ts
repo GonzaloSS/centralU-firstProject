@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 import { Task } from '../../models/task';
 import { TaskService } from '../../services/task.service';
 
@@ -13,7 +14,8 @@ export class SeeAllTaskPage implements OnInit {
   task: Task[];
   constructor(
     private taskService: TaskService,
-    private router: Router
+    private router: Router,
+    private menu: MenuController
   ) { }
 
   ngOnInit() {
@@ -24,7 +26,17 @@ export class SeeAllTaskPage implements OnInit {
     }
   }
 
+  toggleMenu(){
+    this.menu.open();
+  }
 
+  endATask(id: number){
+    this.taskService.endStage(id);
+  }
+
+  addTask(){
+    this.router.navigateByUrl("create-task")
+  }
   getAllTask(){
     console.log("getAllTask");
     

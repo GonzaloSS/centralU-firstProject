@@ -1,31 +1,33 @@
 <ion-app>
   <ion-menu type="overlay" side="start" menuId="user" contentId="main">
     <ion-header>
-      <ion-toolbar color="medium">
+      <ion-toolbar>
         <ion-title>User Menu</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
+      <ion-item>
+        <ion-icon name="moon"></ion-icon>
+        <ion-toggle (ionChange)="onToggleColorTheme($event)"></ion-toggle>
+      </ion-item>
       <ion-list>
         <ion-item [routerLink]="['home']">
           <ion-icon name="home-outline"></ion-icon>
-
-          Home
+          Inicio
         </ion-item>
-        <ion-item [routerLink]="['cart']">
+        <ion-item [routerLink]="['products']">
           <ion-icon name="book-outline"></ion-icon>
-          Catalogue
+          Productos
         </ion-item>
         <ion-item [routerLink]="['profile']">
           <ion-icon name="person-circle-outline"></ion-icon>
-          My profile
+          Ver tareas
         </ion-item>
-
-        <ion-item [routerLink]="['contact-page']">
+        <ion-item [routerLink]="['see-adjustment']">
           <ion-icon name="business-outline"></ion-icon>
-          Contact page
+          Inventario
         </ion-item>
-        <ion-item [routerLink]="['logout']">
+        <ion-item (click)="logout();">
           <ion-icon name="log-out-outline"></ion-icon>
           Log-out
         </ion-item>
@@ -39,31 +41,31 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
+      <ion-item>
+        <ion-icon name="moon"></ion-icon>
+        <ion-toggle (ionChange)="onToggleColorTheme($event)"></ion-toggle>
+      </ion-item>
       <ion-list>
         <ion-item [routerLink]="['home']">
           <ion-icon name="home-outline"></ion-icon>
 
           Home
         </ion-item>
-        <ion-item [routerLink]="['cart']">
+        <ion-item [routerLink]="['products']">
           <ion-icon name="book-outline"></ion-icon>
-          Catalogue
+          Productos
         </ion-item>
-        <ion-item [routerLink]="['tracker']">
+        <ion-item [routerLink]="['see-all-task']">
           <ion-icon name="analytics-outline"></ion-icon>
-          Edit tracking status
+          Ver todas las tareas
         </ion-item>
-        <ion-item [routerLink]="['profile']">
+        <ion-item [routerLink]="['see-employees']">
           <ion-icon name="person-circle-outline"></ion-icon>
-          My profile
+          Empleados
         </ion-item>
-        <ion-item [routerLink]="['contact-page']">
+        <ion-item [routerLink]="['see-adjustment']">
           <ion-icon name="business-outline"></ion-icon>
-          Contact page
-        </ion-item>
-        <ion-item [routerLink]="['logout']">
-          <ion-icon name="log-out-outline"></ion-icon>
-          Log-out
+          Inventario
         </ion-item>
       </ion-list>
     </ion-content>
@@ -71,6 +73,10 @@
 
 
   <ion-menu side="start" menuId="guest" contentId="main">
+    <ion-item>
+      <ion-icon name="moon"></ion-icon>
+      <ion-toggle (ionChange)="onToggleColorTheme($event)"></ion-toggle>
+    </ion-item>
     <ion-header>
       <ion-toolbar color="medium">
         <ion-title>Guest Menu</ion-title>

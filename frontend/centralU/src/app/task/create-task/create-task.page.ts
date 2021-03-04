@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Task } from 'src/app/models/task';
+import { User } from 'src/app/models/user';
+import { EmployeeService } from 'src/app/services/employee.service';
 import { TaskService } from 'src/app/services/task.service';
 
 @Component({
@@ -14,22 +16,38 @@ export class CreateTaskPage implements OnInit {
   
   taskForm: FormGroup;
   task: Task[];
+  user: User[];
   user_id: number;
   constructor(
     private taskService: TaskService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private userService: EmployeeService
   ) {
     this.taskForm = this.fb.group({
       name: [''],
       description: [''],
-      date_deadline:['']
+      date_deadline:[''],
+      user_id: ['']
     })
   }
 
   ngOnInit(){
-
+    this.getAllUsers();
   }
+
+
+  getAllUsers() {
+    console.log("getAllTask");
+
+    this.userService.getUsers().subscribe((user: any) => {
+      console.log(user);
+      this.user = user["result"];
+      console.log(this.user)
+
+    });
+  }
+
 
   onFormSubmit() {
     if (!this.taskForm.valid) {
@@ -41,16 +59,13 @@ export class CreateTaskPage implements OnInit {
         description: this.taskForm.value.description,
         date_deadline: this.taskForm.value.date_deadline,
         project_id: null,
-        user_id: null,
+        user_id: this.taskForm.value.user_id,
         stage_id: null,
         stage_name: null
 
       }
-      
-      this.user_id = this.taskService.getCurrentUser();
-      console.log(this.user_id)
-      console.log(task)
-      this.taskService.addTask(this.user_id, task)
+ 
+      this.taskService.addTask(task)
       this.router.navigateByUrl("home")
       return task;
     }

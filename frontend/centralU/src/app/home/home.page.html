@@ -55,10 +55,7 @@
   <h1 style="text-align: center; margin-top: 20%;">¿Qué desea hacer?</h1>
   <ion-row>
     <ion-col>
-      <ion-item>
-        <ion-label>Toggle Dark Theme</ion-label>
-        <ion-toggle (ionChange)="onToggleColorTheme($event)"></ion-toggle>
-      </ion-item>
+     
       <ion-button *ngIf="!isAdmin" style="margin-top: 5%; margin-left: 25%; width: 50%;" type="submit"
         (click)="ownTask()" color="success" shape="full" expand="block">Ver Tareas</ion-button>
       <ion-button *ngIf="isAdmin" style="margin-top: 5%; margin-left: 25%; width: 50%; height: 60px;"
