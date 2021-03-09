@@ -1,0 +1,35 @@
+.mat-card-header{
+    background-color:#c55f5fd3 !important;
+    border-style: groove;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 90%;
+    box-shadow: 2px 2px #b1afafda;
+    height: 70%;
+    padding:5px;
+    margin-left: auto;
+    margin-right: auto;
+   
+  }
+  .float{
+      position: fixed;
+  }
+.mat-card{
+    background-color:#ffffff00;
+    width: 90%;
+    height: 70%;
+    border-color: #000000;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+.mat-card-content{
+    border-style: solid;
+    background-color: #ffffff;
+    border-color: #31313183;
+    width: 90%;
+    height: auto;
+    box-shadow: 2px 2px #b1afafda;
+    margin-left: auto;
+    margin-right: auto;
+}

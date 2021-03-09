@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Inventory adjustment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="session">
+    <ion-row >
+      <ion-col size-lg="6" size-md="6"size="12" *ngFor="let i of inventory" id="inventory" >
+    <ion-card >
+      <ion-card-header>
+        <ion-card-subtitle>Referencia de inventario: {{i.name}}</ion-card-subtitle>
+        <ion-card-subtitle>Fecha del inventario: {{i.date}}</ion-card-subtitle>
+        <ion-card-subtitle>Fecha contable: {{i.accounting_date}}</ion-card-subtitle>
+        <ion-card-subtitle>Referencia de inventario: {{i.location_ids}}</ion-card-subtitle>
+        <ion-card-subtitle>Productos: {{i.product_ids}}</ion-card-subtitle>
+        <ion-card-subtitle>Estado: {{i.state}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+      </ion-card-content>
+    </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+  <ion-item id="button">
+    <button  color="warn" (click)="addInventory()" mat-fab  slot="end">
+      <mat-icon  >add</mat-icon>
+    </button>
+  </ion-item> 
+</ion-content>

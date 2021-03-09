@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <button (click)="toggleMenu()" mat-icon-button  slot="start">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <ion-title>Mi perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let u of user" >
+    <ion-card-header>
+      <img width="150px" height="150px" src="http://localhost:8069/web/image?model=res.users&field=image_128&id={{u.user}}&unique=" alt="prueba">
+
+      <ion-card-title>Nombre: {{u.name}}</ion-card-title>
+      <ion-card-subtitle>Trabajo: {{u.function}}</ion-card-subtitle>
+      <ion-card-subtitle>Username: {{u.login}}</ion-card-subtitle>
+
+      
+     
+    </ion-card-header>
+    <ion-card-content>
+  </ion-card-content>
+
+  </ion-card>
+</ion-content>

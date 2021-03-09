@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button defaultHref="products" slot="start"></ion-back-button>
+    <ion-title>Detalles del producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card *ngFor="let p of product" >
+    <ion-card-header>
+      <img width="150px" height="150px" src="http://localhost:8069/web/image?model=product.template&field=image_128&id={{p.id}}&unique=" alt="prueba">
+
+      <ion-card-title>Product Name: {{p.name}}</ion-card-title>
+      <ion-card-subtitle>Description: {{p.description}}</ion-card-subtitle>
+      <ion-card-subtitle>Category: {{p.product_category}}</ion-card-subtitle>
+      <ion-card-subtitle>Type: {{p.type}}</ion-card-subtitle>
+      
+     
+    </ion-card-header>
+    <ion-card-content>
+
+      <ion-card-title>Default Code: {{p.default_code}}</ion-card-title>
+      <ion-card-subtitle>Barcode: {{p.barcode}}</ion-card-subtitle>
+      <ion-card-subtitle>List Price: {{p.list_price}} €</ion-card-subtitle>
+      <ion-card-subtitle>Taxes: {{p.taxes_id}}</ion-card-subtitle>
+      <ion-card-subtitle>Company: {{p.company}}</ion-card-subtitle>
+      <ion-card-subtitle>Can Sale?: {{p.sale_ok}}</ion-card-subtitle>
+      <ion-card-subtitle>Can Purchase?: {{p.purchase_ok}}</ion-card-subtitle>
+      <ion-card-subtitle>Invoice Policy: {{p.invoice_policy}}</ion-card-subtitle>
+      <ion-card-subtitle>Expense Policy: {{p.expense_policy}}</ion-card-subtitle>
+      <ion-item>
+      <ion-icon (click)="editProduct(p.id, p.name, p.description, p.type, p.default_code,
+      p.barcode, p.list_price, p.sale_ok, p.purchase_ok, p.invoice_policy,
+      p.expense_policy)" name="create" slot="end"></ion-icon>
+      <ion-icon (click)="deleteProduct(p.id)" name="trash" slot="end"></ion-icon>
+    </ion-item>
+  </ion-card-content>
+
+  </ion-card>
+</ion-content>

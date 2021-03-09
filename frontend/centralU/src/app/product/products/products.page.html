@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <button (click)="toggleMenu()" mat-icon-button  aria-label="Example icon button with a menu icon" slot="start">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <ion-title>Productos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="session">
+    <ion-row >
+      <ion-col size-lg="6" size-md="6"size="12" *ngFor="let p of product" id="products" >
+
+        <mat-card (click) = "goToDetails(p.id)"  class="mat-elevation-z0 outline">
+          <mat-card-header color="medium">
+            <img mat-card-image src="http://localhost:8069/web/image?model=product.template&field=image_128&id={{p.id}}&unique=" alt="Photo of a Product">
+            
+          </mat-card-header>
+          
+          <mat-card-content>
+            <mat-card-title>Product Name: {{p.name}}</mat-card-title>
+            <mat-card-subtitle>Description: {{p.description}}</mat-card-subtitle>
+            <mat-card-subtitle>Cost: {{p.list_price}}</mat-card-subtitle>
+            <mat-card-subtitle>Category: {{p.product_category}}</mat-card-subtitle>
+          </mat-card-content>
+        </mat-card>
+      </ion-col>
+    </ion-row>
+    
+  </ion-list>
+  <ion-item id="button">
+    <button  color="warn" (click)="addProduct()" mat-fab  slot="end">
+      <mat-icon  >add</mat-icon>
+    </button>
+  </ion-item>  
+</ion-content>
