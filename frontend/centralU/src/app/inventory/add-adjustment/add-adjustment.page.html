@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>add-adjustment</ion-title>
+    <ion-back-button defaultHref="see-adjustment" slot="start"></ion-back-button>
+    <ion-title>Añadir ajuste de inventario</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,9 +11,11 @@
       <ion-label position="floating">Nombre</ion-label>
       <ion-input formControlName="name" type="text" required></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label position="floating">Id Localización</ion-label> 
-      <ion-input formControlName="location_ids" type="number" required></ion-input>
+    <ion-item >
+      <ion-label>Ubicación</ion-label>
+      <ion-select formControlName="location_ids" type="number"  required>
+        <ion-select-option value="{{l.id}}" *ngFor="let l of location">{{l.name}}</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-item >
       <ion-label>Productos</ion-label>

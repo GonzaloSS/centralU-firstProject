@@ -36,6 +36,9 @@ export class ProductsPage implements OnInit {
     this.router.navigateByUrl("product-details");
   }
 
+  addProduct(){
+    this.router.navigateByUrl("add-product")
+  }
 
   getAllProducts(){
     console.log("getAllProducts");

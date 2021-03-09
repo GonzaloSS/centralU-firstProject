@@ -25,6 +25,10 @@ export class SeeAdjustmentPage implements OnInit {
     }
   }
 
+
+  addInventory(){
+    this.router.navigateByUrl("add-adjustment")
+  }
   getAllAdjustments(){
     console.log("getAllAdjustments");
     this.inventoryService.getAdjustments().subscribe(( inventory : any) => {

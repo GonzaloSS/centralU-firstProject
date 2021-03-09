@@ -44,6 +44,20 @@ export class InventoryService {
       );
   }
 
+  getLocation(): Observable<Inventory[]> {
+
+    this.headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "X-Openerp-Session-Id": localStorage.getItem('session_id')
+  })
+    return this.httpClient.post<Inventory[]>("http://localhost:8069/api/getLocation", postData, { headers: this.headers })
+      .pipe(
+
+        tap(inventory => console.log('fetched inventories')),
+        catchError(this.handleError('getLocation', []))
+      );
+  }
+
   addAdjustment(inventory: Inventory) {
     this.headers = new HttpHeaders({
       "Content-Type": "application/json",

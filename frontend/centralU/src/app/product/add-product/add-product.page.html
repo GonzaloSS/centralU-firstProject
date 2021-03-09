@@ -1,5 +1,6 @@
 <ion-header>
   <ion-toolbar>
+    <ion-back-button defaultHref="products" slot="start"></ion-back-button>
     <ion-title>add-product</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -28,7 +29,7 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Barcode</ion-label>
-      <ion-input formControlName="barcode" type="text" required></ion-input>
+      <ion-input formControlName="barcode" type="number" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">List price</ion-label>
