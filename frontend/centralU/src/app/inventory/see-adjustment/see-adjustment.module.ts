@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { SeeAdjustmentPageRoutingModule } from './see-adjustment-routing.module';
 
 import { SeeAdjustmentPage } from './see-adjustment.page';
+import { MaterialModule } from 'src/app/material.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    MaterialModule,
     SeeAdjustmentPageRoutingModule
   ],
   declarations: [SeeAdjustmentPage]

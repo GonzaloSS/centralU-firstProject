@@ -67,6 +67,10 @@ const routes: Routes = [
     path: 'see-employee-task',
     loadChildren: () => import('./task/see-employee-task/see-employee-task.module').then( m => m.SeeEmployeeTaskPageModule)
   },
+  {
+    path: 'my-profile',
+    loadChildren: () => import('./my-profile/my-profile.module').then( m => m.MyProfilePageModule)
+  },
 ];
 
 @NgModule({

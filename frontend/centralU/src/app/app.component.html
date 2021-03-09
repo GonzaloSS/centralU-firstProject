@@ -1,7 +1,7 @@
 <ion-app>
   <ion-menu type="overlay" side="start" menuId="user" contentId="main">
     <ion-header>
-      <ion-toolbar>
+      <ion-toolbar color="success">
         <ion-title>User Menu</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -19,9 +19,13 @@
           <ion-icon name="book-outline"></ion-icon>
           Productos
         </ion-item>
-        <ion-item [routerLink]="['profile']">
+        <ion-item [routerLink]="['see-my-own-task']">
+          <ion-icon name="calculator-outline"></ion-icon>
+          Ver mis tareas
+        </ion-item>
+        <ion-item [routerLink]="['my-profile']">
           <ion-icon name="person-circle-outline"></ion-icon>
-          Ver tareas
+          Ver perfil
         </ion-item>
         <ion-item [routerLink]="['see-adjustment']">
           <ion-icon name="business-outline"></ion-icon>
@@ -36,7 +40,7 @@
   </ion-menu>
   <ion-menu side="start" menuId="admin" contentId="main">
     <ion-header>
-      <ion-toolbar color="medium">
+      <ion-toolbar color="success">
         <ion-title>Admin Menu</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -78,7 +82,7 @@
       <ion-toggle (ionChange)="onToggleColorTheme($event)"></ion-toggle>
     </ion-item>
     <ion-header>
-      <ion-toolbar color="medium">
+      <ion-toolbar color="success">
         <ion-title>Guest Menu</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -91,6 +95,10 @@
         <ion-item [routerLink]="['home']">
           <ion-icon name="log-in-outline"></ion-icon>
           Log-in
+        </ion-item>
+        <ion-item >
+          <mat-icon>help</mat-icon>
+          <button mat-menu-item ><a  href="http://localhost:8080/Introduccion.html"  target="blank">Ayuda</a></button>
         </ion-item>
 
 

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Products } from 'src/app/models/product';
+import { Location } from 'src/app/models/location';
+
 import { InventoryService } from 'src/app/services/inventory.service';
 import { ProductsServiceService } from 'src/app/services/products-service.service';
 
@@ -14,6 +16,7 @@ export class AddAdjustmentPage implements OnInit {
 
   inventoryForm: FormGroup;
   products: Products[];
+  location: Location[];
 
   constructor(  private productService: ProductsServiceService,
     private inventoryService: InventoryService,
@@ -31,6 +34,7 @@ export class AddAdjustmentPage implements OnInit {
 
   ngOnInit() {
     this.getAllProducts();
+    this.getAllLocation();
   }
 
   getAllProducts(){
@@ -40,6 +44,17 @@ export class AddAdjustmentPage implements OnInit {
       console.log(product);
       this.products = product["result"];
       console.log(this.products)
+      
+    });
+  }
+
+  getAllLocation(){
+    console.log("getAllProducts");
+    
+    this.inventoryService.getLocation().subscribe(( location : any) => {
+      console.log(location);
+      this.location = location["result"];
+      console.log(this.location)
       
     });
   }

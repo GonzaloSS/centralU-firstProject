@@ -61,6 +61,22 @@ export class EmployeeService {
       );
   }
 
+
+  getUserById() {
+    this.headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "X-Openerp-Session-Id": localStorage.getItem('session_id')
+  })
+    return this.httpClient.post("http://localhost:8069/api/getASingleUser",
+      { jsonrpc: "2.0", params: { 'id': localStorage.getItem('id') } },
+      { headers: this.headers }).pipe(
+        tap(data => {
+          console.log("hola")
+          console.log(data);
+        }, err => {
+          console.log(err);
+        }));
+  }
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
