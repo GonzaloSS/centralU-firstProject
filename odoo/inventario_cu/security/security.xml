@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="group_gestor" model="res.groups">
+            <field name="name">Inventario_cu/Admin Inventario_cu</field>
+            <!-- <field name="comment">Perfil admin de acceso a las Reservas</field> -->
+        </record>
+
+        <record id="group_empleado" model="res.groups">
+            <field name="name">Inventario_cu/Empleado Inventario_cu</field>
+            <!-- <field name="comment">Perfil cliente de acceso a las Reservas</field> -->
+        </record>
+
+        <record id="base.user_admin" model="res.users">
+            <field name="groups_id" eval="[(4, ref('group_gestor'))]"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_inventario_cu_inventario_cu,inventario_cu.inventario_cu,model_inventario_cu_inventario_cu,base.group_user,1,1,1,1

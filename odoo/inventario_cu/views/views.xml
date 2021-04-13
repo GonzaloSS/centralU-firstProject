@@ -1,0 +1,184 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="inventario_cu_tree">
+      <field name="name">stock.inventory_cu.view.tree.inherit.stock.inventory</field>
+      <field name="model">stock.inventory</field>
+      <field name="inherit_id" ref="stock.view_inventory_tree"></field>
+      <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+              <field name="inventory_employee"  widget="one2many_tags"/>
+            </xpath>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="inventario_cu_form">
+      <field name="name">stock.inventory_cu.view.form.inherit.stock.inventory</field>
+      <field name="model">stock.inventory</field>
+      <field name="inherit_id" ref="stock.view_inventory_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='exhausted']" position="after">
+            <field name="inventory_employee"
+                  options="{'no_create': True}"
+                  widget="one2many_tags"
+                  force_save="1"
+                               />
+        </xpath>
+        <xpath expr="//field[@name='product_ids']" position="attributes">
+        <attribute name="string">Excepciones</attribute>
+
+        </xpath>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="inventario_cu_project_kanban">
+      <field name="name">project.project.view.kanban.inherit.project.project</field>
+      <field name="model">project.project</field>
+      <field name="inherit_id" ref="project.view_project_kanban"></field>
+      <field name="arch" type="xml">
+      <kanban></kanban>
+      </field>
+    </record>
+
+    <!-- <record model="ir.ui.view" id="inventario_cu_project_task_form">
+      <field name="name">project.project.view.form.inherit.project.task</field>
+      <field name="model">project.task</field>
+      <field name="inherit_id" ref="project.quick_create_task_form"></field>
+      <field name="arch" type="xml">
+      <xpath expr="//field[@name='name']" position="after">
+        <field name="product_ids" options="{'no_create': True}"
+                               widget="many2many_tags"
+                               force_save="1"></field>
+        <field name="location_ids" options="{'no_create': True}"
+                               widget="many2many_tags"
+                               force_save="1"></field>
+      </xpath>
+      </field>
+    </record> -->
+
+    <record model="ir.ui.view" id="inventario_cu_project_task_form2">
+      <field name="name">project.project.view.form2.inherit.project.task</field>
+      <field name="model">project.task</field>
+      <field name="inherit_id" ref="project.view_task_form2"></field>
+      <field name="arch" type="xml">
+      <xpath expr="//field[@name='partner_id']" position="after">
+        <field name="product_ids" options="{'no_create': True}"
+                               widget="many2many_tags"
+                               force_save="1"></field>
+        <field name="location_ids" options="{'no_create': True}"
+                               widget="many2many_tags"
+                               force_save="1"></field>
+      </xpath>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="inventario_cu_project_task_calendar">
+      <field name="name">project.project.view.calendar.inherit.project.task</field>
+      <field name="model">project.task</field>
+      <field name="inherit_id" ref="project.view_task_calendar"></field>
+      <field name="arch" type="xml">
+      <xpath expr="//field[@name='user_id']" position="after">
+        <field name="product_ids" options="{'no_create': True}"
+                               widget="many2many_tags"
+                               force_save="1"></field>
+        <field name="location_ids" options="{'no_create': True}"
+                               widget="many2many_tags"
+                               force_save="1"></field>
+      </xpath>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="inventario_cu_project_task_kanban">
+      <field name="name">project.project.view.kanban.inherit.project.task</field>
+      <field name="model">project.task</field>
+      <field name="inherit_id" ref="project.view_task_kanban"></field>
+      <field name="arch" type="xml">
+      <xpath expr="//field[@name='name']" position="after">
+        <field name="product_ids" options="{'no_create': True}"
+                               widget="many2many_tags"
+                               force_save="1"></field>
+        <field name="location_ids" options="{'no_create': True}"
+                               widget="many2many_tags"
+                               force_save="1"></field>
+      </xpath>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="inventario_cu_project_task_tree2">
+      <field name="name">project.project.view.tree2.inherit.project.task</field>
+      <field name="model">project.task</field>
+      <field name="inherit_id" ref="project.view_task_tree2"></field>
+      <field name="arch" type="xml">
+      <xpath expr="//field[@name='name']" position="after">
+        <field name="product_ids" widget="many2many_tags"></field>
+        <field name="location_ids" widget="many2many_tags"></field>
+      </xpath>
+      </field>
+    </record>
+
+
+
+    <!-- actions opening views on models -->
+<!-- 
+    <record model="ir.actions.act_window" id="inventario_cu.action_window">
+      <field name="name">inventario_cu window</field>
+      <field name="res_model">inventario_cu.inventario_cu</field>
+      <field name="view_mode">tree,form</field>
+    </record> -->
+
+
+<record model="ir.actions.act_window" id="inventario_cu_action_window">
+      <field name="name">Inventario C.U</field>
+      <field name="res_model">stock.inventory</field>
+      <field name="view_mode">tree,form</field>
+</record>
+
+<record model="ir.actions.act_window" id="inventario_cu_project_action_window">
+      <field name="name">Proyectos</field>
+            <field name="res_model">project.project</field>
+            <field name="view_mode">kanban,tree,form</field>
+</record>
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="inventario_cu.action_server">
+      <field name="name">inventario_cu server</field>
+      <field name="model_id" ref="model_inventario_cu_inventario_cu"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="inventario_cu" id="inventario_cu.menu_root"/>
+-->
+ <menuitem name="Inventario C.U" id="inventario_cu_menu_root"/>
+ 
+    <!-- menu categories -->
+    <menuitem name="Operaciones" id="inventario_cu_menu" parent="inventario_cu_menu_root"/>
+    <menuitem name="Ajustes de inventario" id="inventario_cu_menu_1" parent="inventario_cu_menu" action="inventario_cu_action_window" />
+   
+    <menuitem name="Proyectos" id="inventario_cu_project" parent="inventario_cu_menu_root" action="inventario_cu_project_action_window"/>
+
+<!--
+    <menuitem name="Menu 1" id="inventario_cu.menu_1" parent="inventario_cu.menu_root"/>
+    <menuitem name="Menu 2" id="inventario_cu.menu_2" parent="inventario_cu.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="inventario_cu.menu_1_list" parent="inventario_cu.menu_1"
+              action="inventario_cu.action_window"/>
+    <menuitem name="Server to list" id="inventario_cu" parent="inventario_cu.menu_2"
+              action="inventario_cu.action_server"/>
+-->
+  </data>
+</odoo>
